@@ -1,2 +1,13 @@
-# gcp_global_lb_poc
-POC: GCP Global LB in front of cloudrun in two regions
+# Global LB POC
+
+## Enable the APIs
+
+```bash
+terraform apply -target=google_project_service.service
+```
+
+## Build
+
+```bash
+terraform apply
+```
