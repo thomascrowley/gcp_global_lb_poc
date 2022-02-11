@@ -1,4 +1,7 @@
 module "global_lb" {
+  depends_on = [
+    google_project_service.service
+  ]
   source  = "GoogleCloudPlatform/lb-http/google//modules/serverless_negs"
   version = "~> 5.1"
   name    = local.load_balancer_name
@@ -86,6 +89,9 @@ module "global_lb" {
 }
 
 resource "google_compute_region_network_endpoint_group" "region1" {
+  depends_on = [
+    google_project_service.service
+  ]
   project               = var.project_id
   provider              = google-beta
   name                  = "region1-${var.region1}-serverless-neg"
@@ -97,6 +103,9 @@ resource "google_compute_region_network_endpoint_group" "region1" {
 }
 
 resource "google_compute_region_network_endpoint_group" "region2" {
+  depends_on = [
+    google_project_service.service
+  ]
   project               = var.project_id
   provider              = google-beta
   name                  = "region2-${var.region2}-serverless-neg"
