@@ -1,4 +1,7 @@
 resource "google_compute_url_map" "this" {
+  depends_on = [
+    google_project_service.service
+  ]
   name            = local.load_balancer_name
   default_service = module.global_lb.backend_services["default"].self_link
   project         = var.project_id
